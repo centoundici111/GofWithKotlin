@@ -1,7 +1,7 @@
-package com.patterns
+package com.patterns.command
 
 fun print(message: String) = println("Printing $message")
-fun save(message: String) = println("Saving $message")
+fun save(path: String) = println("Saving $path")
 
 
 fun execute(tasks: List<Runnable>){
@@ -12,8 +12,8 @@ fun execute(tasks: List<Runnable>){
 
 fun main() {
     val tasks = mutableListOf<Runnable>()
-    tasks.add(Runnable { print("thing") })
-    tasks.add(Runnable { save("thing") })
+    tasks.add(Runnable { print("Hello") })
+    tasks.add(Runnable { save("/myFile.txt") })
 
     execute(tasks)
 }
