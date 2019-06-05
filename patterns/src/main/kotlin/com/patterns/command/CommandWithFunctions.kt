@@ -4,16 +4,16 @@ fun print(message: String) = println("Printing $message")
 fun save(path: String) = println("Saving $path")
 
 
-fun execute(tasks: List<Runnable>){
+fun execute(tasks: List<() -> Unit>) {
     tasks.forEach {
-        it.run()
+        it
     }
 }
 
 fun main() {
-    val tasks = mutableListOf<Runnable>()
-    tasks.add(Runnable { print("Hello") })
-    tasks.add(Runnable { save("/myFile.txt") })
+    val tasks = mutableListOf<() -> Unit>()
+    tasks.add { print("Hello") }
+    tasks.add { save("/myFile.txt") }
 
     execute(tasks)
 }
